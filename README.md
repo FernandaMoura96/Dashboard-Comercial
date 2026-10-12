@@ -91,9 +91,9 @@ O dashboard é totalmente interativo. Ao clicar em qualquer elemento, todos os d
 ## 📸 Screenshots
 
 ### Visão Geral do Dashboard
-![Dashboard Completo](screenshots/Captura%20de%20tela%202026-10-12%20131837.jpg)
+![Dashboard Completo](screenshots/completo.jpg)
 
-### Cartões de KPI
+### Cartões de KPISS
 ![Cartões de KPI](screenshots/cartao_kpi.png)
 
 ### Evolução do Faturamento com Tooltip
