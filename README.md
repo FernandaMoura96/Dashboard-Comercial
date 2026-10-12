@@ -116,7 +116,7 @@ O dashboard é totalmente interativo. Ao clicar em qualquer elemento, todos os d
 
 ---
 
-## 🧮 Medidas (DAX)
+## 🧮 Medidas DAX
 
 ⚠️ *Os nomes de tabelas e colunas abaixo são ilustrativos. Consulte o arquivo `.pbix` para ver as medidas exatamente como foram criadas.*
 
@@ -128,3 +128,50 @@ Faturamento = SUM(Vendas[Faturamento])
 Ticket Médio = DIVIDE([Faturamento], DISTINCTCOUNT(Vendas[ID_Pedido]))
 
 Qtd. de Clientes = DISTINCTCOUNT(Vendas[ID_Cliente])
+
+## 🛠️ Ferramentas utilizadas
+Power BI Desktop — modelagem, medidas DAX e visualizações
+
+DAX — criação das métricas e KPIs
+
+Excel (.xlsx) — fonte dos dados utilizados no dashboard
+
+📂 Estrutura do repositório
+
+├── README.md
+├── dashboard_comercial.pbix   # Arquivo principal do Power BI
+├── data/                      # Arquivos .xlsx com as bases de dados utilizadas
+└── screenshots/               # Prints do dashboard para o README
+
+dashboard_comercial.pbix — arquivo do Power BI com o modelo de dados, as medidas DAX e todos os visuais.
+
+data/ — bases .xlsx usadas como fonte do dashboard.
+
+screenshots/ — prints do dashboard final, detalhamentos e interações.
+
+🚀 Como usar
+Clone o repositório:
+
+Bash
+git clone https://github.com/FernandaMoura96/Dashboard-Comercial.git
+Instale o Power BI Desktop (gratuito, disponível para Windows).
+
+Abra o arquivo dashboard_comercial.pbix.
+
+Se o Power BI pedir, atualize o caminho das fontes de dados: Transformar dados → Configurações da fonte de dados → Alterar origem, apontando para a pasta data/ do seu computador.
+
+Explore o dashboard clicando nas marcas, no mapa, nos meses e nas fatias do gráfico de gênero.
+
+Se preferir recriar o projeto do zero, importe os arquivos da pasta data/ no Power BI Desktop, crie as medidas DAX descritas acima e monte os visuais conforme os prints da pasta screenshots/.
+
+📚 Aprendizados
+Criação de medidas em DAX (soma, razão, contagem distinta)
+
+Construção de cartões de KPI e organização visual de um dashboard
+
+Uso de interações entre visuais (filtro cruzado, drill-down e tooltips)
+
+Tradução de perguntas de negócio em indicadores
+
+👩‍💻 Autora
+Fernanda Moura
