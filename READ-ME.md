@@ -1,122 +1,178 @@
-# 📊 Dashboard de Vendas — Power BI
+# 📊 Dashboard Comercial — Power BI
 
-Projeto de dashboard em Power BI com o objetivo de responder às principais perguntas de negócio de uma operação de vendas por meio de indicadores (KPIs) claros e acessíveis.
+Dashboard **interativo** em Power BI para acompanhar o desempenho comercial de uma operação de vendas: quanto foi faturado, quantas unidades foram vendidas, qual o ticket médio, quantos clientes compraram e **qual marca lidera o faturamento em cada região**.
+
+![Dashboard Comercial](screenshots/dashboard-final.png)
+
+---
+
+## 📌 Sumário
+
+- [Objetivo](#-objetivo)
+- [Perguntas de negócio](#-perguntas-de-negócio-respondidas)
+- [Indicadores](#-indicadores-visão-geral-sem-filtros)
+- [Visuais do dashboard](#-visuais-do-dashboard)
+- [Interatividade](#️-interatividade)
+- [Principais insights](#-principais-insights)
+- [Screenshots](#-screenshots)
+- [Medidas DAX](#-medidas-dax)
+- [Ferramentas](#️-ferramentas-utilizadas)
+- [Estrutura do repositório](#-estrutura-do-repositório)
+- [Como usar](#-como-usar)
+- [Aprendizados](#-aprendizados)
+- [Autora](#-autora)
 
 ---
 
 ## 🎯 Objetivo
 
-Construir um dashboard que permita acompanhar, de forma rápida, o desempenho comercial: quanto foi vendido, quanto foi faturado, quanto foi devolvido e qual a participação do canal online.
+Construir um painel que permita acompanhar o desempenho comercial de forma rápida e explorar os números por diferentes ângulos (marca, localização, período e gênero), traduzindo perguntas de negócio em indicadores claros.
 
-## ❓ Perguntas de Negócio
+## ❓ Perguntas de negócio respondidas
 
-| # | Pergunta | KPI no dashboard |
-|---|----------|------------------|
-| 1 | Qual o total de produtos vendidos? | Soma de Qtd. Vendida |
-| 2 | Qual o percentual de devolução? | % devolução |
-| 3 | Qual o faturamento total? | Soma de Faturamento |
-| 4 | Qual o ticket médio? | Ticket médio |
-| 5 | Quantas vendas foram feitas online? | Vendas online / % Vendas Online |
+| # | Pergunta | Onde responder no dashboard |
+|---|----------|-----------------------------|
+| 1 | Qual o faturamento total? | Cartão **Receita** |
+| 2 | Quantas unidades foram vendidas? | Cartão **Qtd. Vendida** |
+| 3 | Qual o ticket médio? | Cartão **Ticket Médio** |
+| 4 | Quantos clientes compraram? | Cartão **Qtd. de Clientes** |
+| 5 | Como o faturamento evoluiu ao longo do tempo? | Gráfico **Soma de Faturamento por Ano e Mês** |
+| 6 | Qual marca mais fatura? | Gráfico **Soma de Faturamento por Marca** |
+| 7 | Qual marca teve o maior faturamento em determinada região? | Mapa **Faturamento Mundial** |
+| 8 | Como as vendas se distribuem entre os gêneros? | Gráfico de rosca **Vendas por Gênero** |
 
-## 📈 Resultados (KPIs)
+## 📈 Indicadores (visão geral, sem filtros)
 
 | Indicador | Valor |
 |-----------|-------|
-| Total de produtos vendidos | **2,12 Mi** |
-| Quantidade devolvida | **7,543 Mil** |
-| % de devolução | **0,36%** |
-| Faturamento total | **R$ 548,51 Mi** |
+| Receita | **R$ 548,51 Mi** |
+| Quantidade vendida | **2,12 Mi** |
 | Ticket médio | **R$ 478,65** |
-| Vendas online (quantidade) | **216 Mil** |
-| % de vendas online | **10,22%** |
+| Quantidade de clientes | **18 Mil** |
 
-### 💡 Principais insights
+## 🧩 Visuais do dashboard
 
-- O volume de **2,12 milhões de produtos vendidos** gerou **R$ 548,51 milhões** em faturamento.
-- A taxa de devolução é **muito baixa (0,36%)**, indicando boa qualidade de produto/entrega.
-- O canal online representa cerca de **10% das vendas**, o que indica espaço para crescimento nesse canal.
+| Visual | O que mostra |
+|--------|--------------|
+| **Cartões de KPI** | Receita, quantidade vendida, ticket médio e quantidade de clientes |
+| **Gráfico de área** | Faturamento mensal de jan/2022 a dez/2024, com drill-down entre ano e mês |
+| **Gráfico de rosca** | Distribuição das vendas (em unidades) entre Feminino e Masculino |
+| **Mapa** | Faturamento por localização, mostrando qual marca teve o maior faturamento em cada área |
+| **Gráfico de barras** | Faturamento total por marca, em ordem decrescente |
 
-> ✏️ *Complemente esta seção com os insights que você encontrar ao finalizar o dashboard (por produto, região, período etc.).*
+## 🖱️ Interatividade
 
----
+O dashboard é totalmente interativo. Ao clicar em qualquer elemento, **todos os demais visuais são recalculados**, o que permite:
 
-## 🖼️ Visualização do Dashboard
+- **Filtrar por marca:** clique em uma barra e veja KPIs, evolução mensal, gênero e mapa apenas daquela marca.
+- **Filtrar por localização:** selecione uma área no mapa para isolar o faturamento da região.
+- **Filtrar por período:** clique em um ponto do gráfico de área para analisar um mês específico ou use o **drill up/down** entre ano e mês.
+- **Filtrar por gênero:** clique em uma fatia da rosca para ver apenas aquele público.
+- **Ver detalhes ao passar o mouse:** os tooltips mostram o valor exato (ex.: março/2024 = R$ 18.053.819,94).
 
-### Cartões de KPIs
+> 💡 Para explorar essas interações, abra o arquivo [`pbix/Dashboard-Comercial.pbix`](pbix/Dashboard-Comercial.pbix) no Power BI Desktop. Para limpar um filtro, clique novamente no elemento selecionado ou em uma área vazia do visual.
 
-<!-- Substitua o caminho abaixo pelo da sua imagem -->
-![KPIs principais](images/kpis.png)
+## 🔍 Principais insights
 
-### Visão geral (dashboard final)
+- **Alta concentração por marca:** a Contoso responde por cerca de **41%** da receita (R$ 224 Mi). Somadas, as três maiores marcas (Contoso, Northwind Traders e Litware) representam cerca de **82%** do faturamento.
+- **Mudança de patamar em 2023:** o faturamento mensal fica entre R$ 4 Mi e R$ 6 Mi em 2022 e passa para a faixa de R$ 14 Mi a R$ 25 Mi a partir de jan/2023.
+- **Pico em 2024:** o maior faturamento mensal é de cerca de R$ 25 Mi, em meados de 2024, seguido de queda para cerca de R$ 15 Mi no fim do período.
+- **Público:** o gênero feminino representa **55,2%** das unidades vendidas (1,17 Mi) e o masculino **44,8%** (0,95 Mi).
 
-<!-- Adicione aqui o print do dashboard completo -->
-![Dashboard final](images/dashboard-final.png)
+> ⚠️ O gráfico de gênero mostra **quantidade de unidades**, não receita.
 
-### Análises adicionais
+## 📸 Screenshots
 
-<!-- Adicione quantos prints quiser, por exemplo: vendas por mês, por produto, por região -->
-![Análise 1](images/analise-1.png)
-![Análise 2](images/analise-2.png)
+### Dashboard final
+![Dashboard final](screenshots/dashboard-final.png)
 
-> 💡 **Como adicionar imagens:** salve os prints na pasta `images/` do repositório e ajuste os nomes nos links acima.
+### Cartões de KPI
+![Cartões de KPI](screenshots/kpis.png)
+
+### Evolução do faturamento com tooltip
+Detalhe do valor exato de cada mês ao passar o mouse, com opção de drill up.
+
+![Faturamento por ano e mês com tooltip](screenshots/faturamento-tooltip.png)
+
+### Filtro por marca
+Ao selecionar **Northwind Traders** no gráfico de marcas, os demais visuais são filtrados e a barra selecionada fica em destaque.
+
+![Filtro por marca](screenshots/mapa-e-marcas-filtro-marca.png)
+
+### Filtro por período
+Ao selecionar um mês no gráfico de área, KPIs, gênero, mapa e marcas são recalculados.
+
+![Dashboard filtrado por período](screenshots/dashboard-filtrado.png)
+
+### Vendas por gênero com filtro aplicado
+![Vendas por gênero filtrado](screenshots/vendas-por-genero-filtrado.png)
+
+### Evolução do layout
+Versões anteriores do dashboard, antes do ajuste final de layout e títulos.
+
+![Versão anterior 1](screenshots/versao-anterior-1.png)
+
+![Versão anterior 2](screenshots/versao-anterior-2.png)
 
 ---
 
 ## 🧮 Medidas (DAX)
 
-> ⚠️ Ajuste os nomes de tabelas e colunas conforme o seu modelo de dados.
+> ⚠️ Os nomes de tabelas e colunas abaixo são ilustrativos. Consulte o arquivo `.pbix` para ver as medidas exatamente como foram criadas.
 
 ```DAX
 Total Vendido = SUM(Vendas[Qtd_Vendida])
-
-Total Devolvido = SUM(Vendas[Qtd_Devolvida])
-
-% Devolução = DIVIDE([Total Devolvido], [Total Vendido])
 
 Faturamento = SUM(Vendas[Faturamento])
 
 Ticket Médio = DIVIDE([Faturamento], DISTINCTCOUNT(Vendas[ID_Pedido]))
 
-Vendas Online = CALCULATE([Total Vendido], Vendas[Canal] = "Online")
-
-% Vendas Online = DIVIDE([Vendas Online], [Total Vendido])
+Qtd. de Clientes = DISTINCTCOUNT(Vendas[ID_Cliente])
 ```
 
----
-
-## 🛠️ Ferramentas Utilizadas
+## 🛠️ Ferramentas utilizadas
 
 - **Power BI Desktop** — modelagem, medidas DAX e visualizações
 - **DAX** — criação das métricas e KPIs
 - **Excel (.xlsx)** — fonte dos dados utilizados no dashboard
 
-## 📂 Estrutura do Repositório
+## 📂 Estrutura do repositório
 
 ```
 ├── README.md
-├── data/        # Arquivos .xlsx com as bases de dados utilizadas
-└── images/      # Prints do dashboard
+├── data/          # Arquivos .xlsx com as bases de dados utilizadas
+├── pbix/          # Arquivo do Power BI (Dashboard-Comercial.pbix)
+└── screenshots/   # Prints do dashboard
 ```
 
-- **`data/`** — disponibiliza os arquivos `.xlsx` usados como fonte do dashboard.
-- **`images/`** — reúne as imagens do dashboard final e das análises (a serem adicionadas).
+- **`data/`** — bases `.xlsx` usadas como fonte do dashboard.
+- **`pbix/`** — arquivo do Power BI com o modelo de dados, as medidas DAX e todos os visuais.
+- **`screenshots/`** — prints do dashboard final, das interações e da evolução do layout.
 
-## 🚀 Como Usar
+## 🚀 Como usar
 
 1. Clone o repositório:
+
    ```bash
-   git clone https://github.com/FernandaMoura96/NOME-DO-REPOSITORIO.git
+   git clone https://github.com/FernandaMoura96/Dashboard-Comercial.git
    ```
-2. Acesse a pasta `data/` e abra os arquivos `.xlsx` para conhecer as bases.
-3. Importe as bases no **Power BI Desktop** e recrie as medidas DAX descritas acima.
+
+2. Instale o [Power BI Desktop](https://powerbi.microsoft.com/desktop/) (gratuito, disponível apenas para Windows).
+3. Abra o arquivo `pbix/Dashboard-Comercial.pbix`.
+4. Se o Power BI pedir, atualize o caminho das fontes de dados: **Transformar dados → Configurações da fonte de dados → Alterar origem**, apontando para a pasta `data/` do seu computador.
+5. Explore o dashboard clicando nas marcas, no mapa, nos meses e nas fatias do gráfico de gênero.
+
+Se preferir recriar o projeto do zero, importe os arquivos da pasta `data/` no Power BI Desktop, crie as medidas DAX descritas acima e monte os visuais conforme os prints da pasta `screenshots/`.
 
 ## 📚 Aprendizados
 
-- Criação de medidas em DAX (soma, razão, filtros por canal)
+- Criação de medidas em DAX (soma, razão, contagem distinta)
 - Construção de cartões de KPI e organização visual de um dashboard
+- Uso de interações entre visuais (filtro cruzado, drill-down e tooltips)
 - Tradução de perguntas de negócio em indicadores
 
 ## 👩‍💻 Autora
 
 **Fernanda Moura**
-🔗 [GitHub](https://github.com/FernandaMoura96)
+
+🔗 [LinkedIn](https://www.linkedin.com/in/fernanda-moura96) · [GitHub](https://github.com/FernandaMoura96)
