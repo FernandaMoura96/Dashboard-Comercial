@@ -91,9 +91,9 @@ O dashboard é totalmente interativo. Ao clicar em qualquer elemento, todos os d
 ## 📸 Screenshots
 
 ### Visão Geral do Dashboard
-![Dashboard Completo](screenshots/completo.jpg)
+![Dashboard Completo](screenshots/completo.png)
 
-### Cartões de KPISS
+### Cartões de KPI
 ![Cartões de KPI](screenshots/cartao_kpi.png)
 
 ### Evolução do Faturamento com Tooltip
@@ -103,15 +103,15 @@ O dashboard é totalmente interativo. Ao clicar em qualquer elemento, todos os d
 ![Vendas por Gênero](screenshots/fat_genero.png)
 
 ### Faturamento Mundial e por Marca
-![Faturamento Local](screenshots/faturamento_local.jpg)
+![Faturamento Local](screenshots/faturamento_local.png)
 
 ### Exemplos de Demonstração
 <p align="center">
-  <img src="screenshots/demo_1.jpg" width="48%" />
-  <img src="screenshots/demo_3.jpg" width="48%" />
+  <img src="screenshots/demo_1.png" width="48%" />
+  <img src="screenshots/demo_3.png" width="48%" />
 </p>
 <p align="center">
-  <img src="screenshots/demo-2.jpg" width="48%" />
+  <img src="screenshots/demo-2.png" width="48%" />
 </p>
 
 ---
